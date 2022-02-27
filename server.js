@@ -16,13 +16,13 @@ app.get("/app/flip/", (req, res) => {
     res.status(200).contentType('json').json({"flip": `${coinFlip()}`}); 
 });
 
-app.get("/app/flip/:number", (req, res) => {
+app.get("/app/flips/:number/", (req, res) => {
     const raw = coinFlips(req.params.number); 
     const summary = countFlips(raw);
     res.status(200).contentType('json').json({raw: raw, summary: summary}); 
 });
 
-app.get("/app/flip/call/:call", (req, res) => {
+app.get("/app/flip/call/:call/", (req, res) => {
     if (req.params.call === 'heads' || req.params.call === 'tails') {
         let results = flipACoin(req.params.call); 
         res.status(200).contentType('json').json(results); 
